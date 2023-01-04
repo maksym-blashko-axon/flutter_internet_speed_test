@@ -60,7 +60,7 @@ public class SwiftInternetSpeedTestPlugin: NSObject, FlutterPlugin {
                 self.logger.printLog(message: "inside if")
                 switch methodName {
                 case "startDownloadTesting" :
-                    self.speedTest.runDownloadTest(for: URL(string: testServer)!, size: fileSize, timeout: DEFAULT_TEST_TIMEOUT, current: { (currentSpeed) in
+                    self.speedTest.runDownloadTest(for: URL(string: testServer)!, size: fileSize, timeout: TimeInterval(self.DEFAULT_TEST_TIMEOUT), current: { (currentSpeed) in
                         var argsMap: [String: Any] = [:]
                         argsMap["id"] = currentListenerId
                         argsMap["transferRate"] = self.getSpeedInBytes(speed: currentSpeed)
@@ -105,7 +105,7 @@ public class SwiftInternetSpeedTestPlugin: NSObject, FlutterPlugin {
                     
                     //                    break
                 case "startUploadTesting":
-                    self.speedTest.runUploadTest(for: URL(string: testServer)!, size: fileSize, timeout: DEFAULT_TEST_TIMEOUT, current: { (currentSpeed) in
+                    self.speedTest.runUploadTest(for: URL(string: testServer)!, size: fileSize, timeout: TimeInterval(self.DEFAULT_TEST_TIMEOUT), current: { (currentSpeed) in
                         var argsMap: [String: Any] = [:]
                         argsMap["id"] = currentListenerId
                         argsMap["transferRate"] = self.getSpeedInBytes(speed: currentSpeed)
